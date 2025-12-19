@@ -1,0 +1,238 @@
+/* App.css - Final Merged Version */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+/* --- 1. ANA DÜZEN (LAYOUT) --- */
+.app-container {
+  display: flex;       /* Yan yana dizilim */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* --- 2. SOL SIDEBAR --- */
+.sidebar {
+  width: 320px;         /* Geniş Menü */
+  background-color: #1e293b;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #334155;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  padding: 24px;
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+}
+
+.flight-item {
+  padding: 18px 24px;
+  border-bottom: 1px solid #334155;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.flight-item:hover {
+  background-color: #334155;
+  color: white;
+}
+
+.flight-item.active {
+  background-color: #2563eb;
+  color: white;
+  border-left: 6px solid #60a5fa;
+}
+
+.flight-code {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.flight-route {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.flight-time {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* --- 3. SAĞ İÇERİK --- */
+.dashboard-content {
+  flex-grow: 1;         /* Kalan alanı kapla */
+  background-color: #f3f4f6;
+  padding: 30px;
+  overflow-y: auto;     /* Scroll burada */
+  height: 100%;
+}
+
+/* --- 4. GENEL BİLEŞENLER (KARTLAR & TABLOLAR) --- */
+.custom-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.card-title-custom {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th {
+  text-align: left;
+  padding: 12px;
+  background-color: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.custom-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.badge-role {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* --- 5. PLANE VIEW (UÇAK STİLLERİ - GERİ GELDİ!) --- */
+.plane-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 50px 50px 20px 20px; /* Burun şekli */
+  border: 4px solid #cbd5e1;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.cockpit-area {
+  background-color: #f1f5f9;
+  border-radius: 40px 40px 10px 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed #94a3b8;
+  text-align: center;
+}
+
+.cabin-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aisle-number {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  width: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.seat {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.seat:hover {
+  transform: scale(1.15);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Renkler */
+.seat.empty {
+  background-color: #f1f5f9;
+  color: #cbd5e1;
+}
+
+.seat.occupied {
+  background-color: #3b82f6; /* Yolcu: Mavi */
+  color: white;
+  border-color: #2563eb;
+}
+
+.seat.crew {
+  background-color: #f59e0b; /* Ekip: Turuncu */
+  color: white;
+}
+
+.seat.pilot {
+  background-color: #1e293b; /* Pilot: Koyu */
+  color: white;
+}
+
+/* Açıklama Kutusu */
+.legend-box {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  font-size: 0.85rem;
+  padding: 15px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
